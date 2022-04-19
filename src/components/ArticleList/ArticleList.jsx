@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import HnApi from '../../services/HackerNewsApi';
 
-const MainPage = () => {
+const ArticleList = () => {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
@@ -20,4 +20,4 @@ const MainPage = () => {
   );
 };
 
-export default MainPage;
+export default ArticleList;
