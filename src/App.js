@@ -1,11 +1,12 @@
-import './App.css';
-import MainPage from './components/MainPage/MainPage'
+import MainPage from './components/MainPage/MainPage';
 
-
+/**
+ * Main component encapsulating the whole application
+ * @return {App}
+ */
 function App() {
-
   return (
-    <div className="App">
+    <div className={''}>
       <MainPage />
     </div>
   );

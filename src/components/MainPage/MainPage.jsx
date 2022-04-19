@@ -1,14 +1,15 @@
-import { useEffect, useState } from "react";
-import HnApi from "../../services/HackerNewsApi";
+import { useEffect, useState } from 'react';
+import HnApi from '../../services/HackerNewsApi';
 
 const MainPage = () => {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    HnApi.search("test")
+    HnApi.search('test')
       .then((response) => response.json())
       .then((data) => setArticles(data.hits));
   }, []);
+
   return (
     <div>
       {articles &&
