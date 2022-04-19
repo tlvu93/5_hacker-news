@@ -1,13 +1,22 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import HnApi from "../../services/HackerNewsApi";
 
 const MainPage = () => {
+  const [articles, setArticles] = useState([]);
+
   useEffect(() => {
     HnApi.search("test")
       .then((response) => response.json())
-      .then((data) => console.log(data.hits));
+      .then((data) => setArticles(data.hits));
   }, []);
-  return <div></div>;
+  return (
+    <div>
+      {articles &&
+        articles.map((article) => {
+          return <div key={article.objectID}>{article.title}</div>;
+        })}
+    </div>
+  );
 };
 
 export default MainPage;
