@@ -27,9 +27,9 @@ export default class Api {
         queryStr && `query=${queryStr}`,
         tags && `tags=${tags}`,
         numericFilters && `numericFilters=${numericFilters}`,
-        page && `page=${page}`,
+        page && `&page=${page}`,
       ].join(''),
-    );
+    ).then((response) => response.json());
   }
 
   /**
@@ -42,13 +42,16 @@ export default class Api {
    *
    * @param {Int} minPoints
    * @param {Float} lastDateInSeconds
+   * @param {Int} page
    */
-  static async getPopularArticles(
+  static async getPopularArticles({
     minPoints = 500,
     lastDateInSeconds = Date.now() / 1000 - 604800,
-  ) {
+    page = 0,
+  }) {
     return this.search({
       numericFilters: `points>${minPoints},created_at_i>${lastDateInSeconds}`,
+      page: `${page}`,
     });
   }
 }
