@@ -12,15 +12,17 @@ const ArticleCard = (data) => {
     else return `${elapsedTime.toFixed(0)} minutes ago`;
     if (elapsedTime > 24) elapsedTime /= 24; // convert to days
     else return `${elapsedTime.toFixed(0)} hours ago`;
+    if (elapsedTime > 365) elapsedTime /= 365; // convert to days
+    else return `${elapsedTime.toFixed(0)} days ago`;
 
-    return `${elapsedTime.toFixed(0)} days ago`;
+    return `${elapsedTime.toFixed(0)} years ago`;
   };
 
   return (
     <div className="pl-10 relative border border-gray-300 rounded-md bg-gray-100">
-      <div className="flex flex-col absolute left-0 ml-1.5">
+      <div className="flex flex-col absolute left-0 ml-1.5 min-h-[60px]">
         {/* Upvote */}
-        <button>
+        <button className="h-6 w-6">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6"
@@ -37,11 +39,11 @@ const ArticleCard = (data) => {
           </svg>
         </button>
         {/* Points */}
-        <p className="text-sm">
+        <p className="text-sm text-center">
           {data.points < 1000 ? data.points : shortenNum(data.points)}
         </p>
         {/* Downvote */}
-        <button>
+        <button className="h-6 w-6">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6"
