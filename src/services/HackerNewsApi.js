@@ -1,4 +1,4 @@
-const BASE_URL = 'http://hn.algolia.com/api/v1';
+const BASE_URL = 'https://hn.algolia.com/api/v1';
 
 /**
  * Class to access the Hacker News API
