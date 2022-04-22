@@ -9,7 +9,9 @@ const Header = ({createNewQuery}) => {
   return (
     <div className="flex fixed z-10 top-0 h-12 w-full items-center justify-center wire bg-white">
       <div className="pl-4">
-        <img className="h-8" src={logo} alt="Logo" />
+        <a href="/">
+          <img className="h-8" src={logo} alt="Logo" />
+        </a>
       </div>
       {/* Searchbar and Profile Button*/}
       <div className="flex flex-grow min-w-0 lg:w-3/4 xl:w-4/5 justify-between pr-4">
