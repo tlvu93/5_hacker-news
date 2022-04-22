@@ -3,6 +3,7 @@ import logo from './logo.png';
 
 const Header = () => {
   const [open, setOpen] = useState(false);
+  const [input, setInput] = useState('');
 
   return (
     <div className="flex fixed z-10 top-0 h-12 w-full items-center justify-center wire bg-white">
@@ -12,7 +13,8 @@ const Header = () => {
       {/* Searchbar and Profile Button*/}
       <div className="flex flex-grow min-w-0 lg:w-3/4 xl:w-4/5 justify-between pr-4">
         <div className="w-full min-w-0 lg:px-6 xl:w-3/4 xl:px-12">
-          <div className="flex relative">
+          {/* Searchbar */}
+          <div className="flex relative max-w-2xl justify-center lg:mx-20">
             {/* Magnifying Glass */}
             <div className="pointer-events-none absolute inset-y-0 left-0 pl-4 flex items-center">
               <svg
@@ -28,6 +30,11 @@ const Header = () => {
               type="search"
               name="search"
               placeholder="Search"
+              value={input}
+              onInput={(e) => setInput(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') console.log('test');
+              }}
             />
           </div>
         </div>
