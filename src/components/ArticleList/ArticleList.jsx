@@ -1,20 +1,8 @@
-/* eslint-disable no-unused-vars */
-import {useState} from 'react';
-import HnApi from '../../services/HackerNewsApi';
 import InfiniteScroll from 'react-infinite-scroller';
 import ArticleCard from './ArticleCard';
+import PropTypes from 'prop-types';
 
-const ArticleList = () => {
-  const [articles, setArticles] = useState([]);
-  const [hasMore, setHasMore] = useState(true);
-
-  const handleLoadMore = (page) => {
-    HnApi.getPopularArticles({page: page, minPoints: 50}).then((data) => {
-      setArticles([...articles, ...data.hits]);
-      setHasMore(data.hits.length > 0);
-    });
-  };
-
+const ArticleList = ({articles, hasMore, handleLoadMore}) => {
   const loadingSpinner = (
     <div key={0} className="loader flex flex-col items-center gap-8">
       <p>Loading Content...</p>
@@ -54,6 +42,12 @@ const ArticleList = () => {
       </InfiniteScroll>
     </div>
   );
+};
+
+ArticleList.propTypes = {
+  articles: PropTypes.array,
+  hasMore: PropTypes.bool,
+  handleLoadMore: PropTypes.func,
 };
 
 export default ArticleList;

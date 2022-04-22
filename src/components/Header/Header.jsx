@@ -1,7 +1,8 @@
 import {useState} from 'react';
 import logo from './logo.png';
+import PropTypes from 'prop-types';
 
-const Header = () => {
+const Header = ({createNewQuery}) => {
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState('');
 
@@ -33,7 +34,7 @@ const Header = () => {
               value={input}
               onInput={(e) => setInput(e.target.value)}
               onKeyDown={(e) => {
-                if (e.key === 'Enter') console.log('test');
+                if (e.key === 'Enter') createNewQuery(input);
               }}
             />
           </div>
@@ -67,5 +68,9 @@ const Header = () => {
       </div>
     </div>
   );
+};
+
+Header.propTypes = {
+  createNewQuery: PropTypes.func,
 };
 export default Header;
