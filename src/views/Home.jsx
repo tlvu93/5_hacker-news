@@ -15,7 +15,6 @@ function Home() {
   const handleLoadMore = (page) => {
     // Default query on start or when String is empty
     HnApi.search({page: page, queryStr: query}).then((data) => {
-      console.log(data);
       setArticles([...articles, ...data.hits]);
       setHasMore(data.hits.length > 0);
     });

@@ -20,7 +20,7 @@ const ArticleCard = (data) => {
 
   return (
     <div className="pl-10 relative border border-gray-300 rounded-md bg-gray-100">
-      <div className="flex flex-col absolute left-0 ml-1.5 min-h-[60px]">
+      <div className="flex flex-col absolute left-0 ml-1.5">
         {/* Upvote */}
         <button className="h-6 w-6">
           <svg
@@ -61,7 +61,7 @@ const ArticleCard = (data) => {
         </button>
       </div>
       <a href={data.url}>
-        <div className="bg-white p-2">
+        <div className="bg-white p-2 min-h-[82px]">
           {/* Article Info */}
           <div>
             <p className="text-xs">

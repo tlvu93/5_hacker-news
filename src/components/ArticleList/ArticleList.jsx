@@ -3,6 +3,11 @@ import ArticleCard from './ArticleCard';
 import PropTypes from 'prop-types';
 
 const ArticleList = ({articles, hasMore, handleLoadMore}) => {
+  const renameKey = (object, key, newKey) => {
+    object[key] = object[newKey];
+    return object;
+  };
+
   const loadingSpinner = (
     <div key={0} className="loader flex flex-col items-center gap-8">
       <p>Loading Content...</p>
@@ -35,9 +40,15 @@ const ArticleList = ({articles, hasMore, handleLoadMore}) => {
         initialLoad={true}
       >
         <div className={'py-5 px-6'}>
-          {articles.map((data) => (
-            <ArticleCard key={data.objectID} {...data} />
-          ))}
+          {articles.map((data) => {
+            // Rename old key name from story_title to title
+            // Removing if both are not present
+            if (!data.title) {
+              if (!data.story_title) return;
+              data = renameKey(data, 'story_title', 'title');
+            }
+            return <ArticleCard key={data.objectID} {...data} />;
+          })}
         </div>
       </InfiniteScroll>
     </div>
